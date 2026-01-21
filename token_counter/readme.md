@@ -18,6 +18,7 @@ However, this is objective, the primary catch is that BPE is entirely data-depen
 
 The algorithm counts every adjacent pair across the entire list: 
 
+    For "this is a good coffee",
     The "is" case: The pair i s appears in "this" and "is". It has a frequency of 2.
     The "oo" case: The pair o o appears in "good" and "cooffee". It also has a frequency of 2.
     The "ee" case: The pair e e appears once in "cooffee". It has a frequency of 1.
