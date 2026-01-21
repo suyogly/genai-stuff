@@ -34,4 +34,3 @@ What I realised:
 - Clarification on Tokenizers and Attention Mechanism
     - Tokenizer (Preprocessing): Converts "Hello" -> [15496].
     - Attention Mechanism (Processing): Takes the embedding of [15496], compares it to other tokens, and determines its contextual importance. 
-- Byte Pair Encoding (BPE): 
