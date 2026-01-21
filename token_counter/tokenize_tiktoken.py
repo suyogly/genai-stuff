@@ -5,11 +5,17 @@ def get_tokens(payload):
     tokens = encoding.encode(payload)
 
     token_mapping = {}
+    token_texts = []
     for token in tokens:
         token_text = encoding.decode([token])
+        token_texts.append(token_text)
         token_mapping[token_text] = token
 
-    return {"text" : payload,
+    return {
+        "tiktoken": {
+            "text" : payload,
             "tokens" : tokens,
+            "token texts" : token_texts,
             "number of tokens" : len(tokens),
-            "token map" : token_mapping}
+            "token map" : token_mapping
+    }}
