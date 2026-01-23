@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Body
-from token_counter.tokenize_tiktoken import get_tokens
-from token_counter.tokenize_wordpiece import wordpiece
+from _1token_counter.tokenize_tiktoken import get_tokens
+from _1token_counter.tokenize_wordpiece import wordpiece
 
 app = FastAPI()
 
