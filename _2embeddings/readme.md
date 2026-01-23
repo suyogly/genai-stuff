@@ -1,5 +1,7 @@
 ### Overview of Embeddings
-
+.
+.
+.
 
 
 Questions:
@@ -12,15 +14,18 @@ Questions:
 7. what word2vec solved? and why is king - man + woman = queen? and why did we need contextual embeddings later on over word2vec?
 8. is contextual embedding a by product of transformer architecture? or is it something different? do i need to understand attention mechanism to understand contextual embeddings?
 9. why 300 dimensions? why not 100 or 500? and why that many demensions for a single token?
-10. the thing i didnt understand, dont give in md, just plain text:
-tokenizer gives ids -> numbers
-embedding is made from those numbers
-and transformer makes again the contexual embeddings
-but the embedding that is fed to the transformer, where does it come from? what procudes it?
+10. the thing i didnt understand:
+- tokenizer gives ids -> numbers
+- embedding is made from those numbers
+- and transformer makes again the contextual embeddings
+- but the embedding that is fed to the transformer, where does it come from? what produces it?
 
 
 Answers:
-
+1.
+2.
+3.
+...
 
 
 
