@@ -1,4 +1,7 @@
 tiktoken
 fastapi[standard]
 transformers
-gensim
+langchain
+langchain-google-genai
+langchain-groq
+dotenv
