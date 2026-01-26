@@ -59,6 +59,3 @@ def explainer_agent(llm = ChatGroq(model = "openai/gpt-oss-120b",temperature = 0
     res = agent.invoke({"messages": [{"role": "user", "content": "call the similarity tool anf follow the system prompt"}]})
 
     return res["messages"][-1].content
-
-
-print(explainer_agent())
