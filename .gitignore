@@ -12,3 +12,8 @@ build/
 coverage/
 *.sqlite3
 *.db
+__pypackages__/
+*.egg-info/
+.envrc
+*.pytest_cache/
+.mypy_cache/
