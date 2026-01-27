@@ -17,3 +17,12 @@ __pypackages__/
 .envrc
 *.pytest_cache/
 .mypy_cache/
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+.pytest_cache/
+.ipynb_checkpoints/
+.venv-workers/
+.venv-test/
+.terraform/
