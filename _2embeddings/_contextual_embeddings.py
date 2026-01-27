@@ -3,10 +3,10 @@ from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from langchain.tools import tool
 from typing import List
-from dotenv import load_dotenv
+import os
 import numpy as np
 
-load_dotenv()
+os.getenv("GOOGLE_API_KEY")
 
 embedder = GoogleGenerativeAIEmbeddings(
     model="gemini-embedding-001",
