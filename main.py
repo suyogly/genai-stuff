@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Body
 from _1token_counter.tokenize_tiktoken import get_tokens
 from _1token_counter.tokenize_wordpiece import wordpiece
+from _2embeddings._contextual_embeddings import cosine_similarity
 
 app = FastAPI()
 
@@ -18,4 +19,10 @@ def wordpiece_tokens(payload: dict = Body(...)):
 def compare_tiktoken_wordpiece(payload: dict = Body(...)):
    return tiktoken_tokens(payload=payload), wordpiece_tokens(payload=payload)
 
+@app.post("/embeddings")
+def contextual_embeddings(payload: dict = Body(...)):
+   text = payload.get("input", None)
+   data = cosine_similarity(intents=text)
+
+   return data
   
