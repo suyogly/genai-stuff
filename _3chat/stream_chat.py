@@ -1,6 +1,7 @@
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from dotenv import load_dotenv
+import json
 import os
 
 load_dotenv()
@@ -22,7 +23,7 @@ def Stream_chat(intent: str):
         stream_mode="messages"):
             
         if chunk.content:
-            yield f"{chunk.content} | "
+            yield f"data: {json.dumps(chunk.content)}\n\n"
 
 if __name__ == "__main__":
    Stream_chat()
