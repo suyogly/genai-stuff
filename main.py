@@ -1,11 +1,20 @@
 from fastapi import FastAPI, Body
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 from _1token_counter.tokenize_tiktoken import get_tokens
 from _1token_counter.tokenize_wordpiece import wordpiece
 from _2embeddings._contextual_embeddings import cosine_similarity
 from _3chat.stream_chat import Stream_chat
 
 app = FastAPI()
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:3000"],  # Your Next.js URL
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 @app.post("/tiktoken")
 def tiktoken_tokens(payload : dict = Body(...)):
@@ -29,6 +38,6 @@ def contextual_embeddings(payload: dict = Body(...)):
 
 @app.post("/chat_stream")
 def chat_stream(payload: dict = Body(...)):
-   user_msg = payload.get("input", "")
+   user_msg = payload.get("query", "")
    res = Stream_chat(intent=user_msg)
    return StreamingResponse(res, media_type="text/event-stream")
