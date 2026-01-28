@@ -1,12 +1,16 @@
+import os
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from langchain.tools import tool
 from typing import List
-import os
-import numpy as np
+from dotenv import load_dotenv # fuck it off in prod
+import numpy as np 
 
-os.getenv("GOOGLE_API_KEY")
+load_dotenv() # fuck it off in prod
+
+if not os.getenv("GOOGLE_API_KEY"):
+    raise RuntimeError("GOOGLE_API_KEY is not set")
 
 embedder = GoogleGenerativeAIEmbeddings(
     model="gemini-embedding-001",
