@@ -1,5 +1,0 @@
-fastapi[standard]
-langchain
-langchain-google-genai
-dotenv
-langchain-groq
