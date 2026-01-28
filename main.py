@@ -31,4 +31,4 @@ def contextual_embeddings(payload: dict = Body(...)):
 def chat_stream(payload: dict = Body(...)):
    user_msg = payload.get("input", "")
    res = Stream_chat(intent=user_msg)
-   return StreamingResponse(res, media_type="text/plain")
+   return StreamingResponse(res, media_type="text/event-stream")
