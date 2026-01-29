@@ -1,5 +1,6 @@
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
+from chat_models.groq_models import gpt_oss_120b
 from dotenv import load_dotenv
 import json
 import os
@@ -8,7 +9,7 @@ load_dotenv()
 # if not os.getenv("GOOGLE_API_KEY"):
 #     raise RuntimeError("GOOGLE_API_KEY is not set")
 
-def stream_chat_agent(llm=ChatGroq(model="openai/gpt-oss-120b", temperature=0.7)):
+def stream_chat_agent(llm=gpt_oss_120b()):
     agent = create_agent(
         model=llm,
         system_prompt="You are a helpful assistant."
@@ -24,6 +25,7 @@ def Stream_chat(intent: str):
             
         if chunk.content:
             yield f"data: {json.dumps(chunk.content)}\n\n"
+
 
 if __name__ == "__main__":
    Stream_chat()
