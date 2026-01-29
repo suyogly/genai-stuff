@@ -1,5 +1,5 @@
-from langchain_groq import ChatGroq
 from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver
 from _chat_models.groq_models import gpt_oss_120b
 from dotenv import load_dotenv
 import json
@@ -9,19 +9,25 @@ load_dotenv()
 # if not os.getenv("GOOGLE_API_KEY"):
 #     raise RuntimeError("GOOGLE_API_KEY is not set")
 
+memory = InMemorySaver()
+
 def stream_chat_agent(llm=gpt_oss_120b()):
     agent = create_agent(
         model=llm,
-        system_prompt="You are a helpful assistant."
+        system_prompt="You are a helpful assistant.",
+        checkpointer=memory
     )
     return agent
 
 def Stream_chat(intent: str):
     agent = stream_chat_agent()
     
+    
     for chunk, metadata in agent.stream(
         {"messages": [{"role": "user", "content": intent}]},
-        stream_mode="messages"):
+        {"configurable": {"thread_id": 1}},
+        stream_mode="messages"
+        ):
             
         if chunk.content:
             yield f"data: {json.dumps(chunk.content)}\n\n"
