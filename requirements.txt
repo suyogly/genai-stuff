@@ -4,4 +4,5 @@ transformers
 langchain
 langchain-google-genai
 langchain-groq
+langgraph
 dotenv
