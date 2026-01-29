@@ -1,6 +1,6 @@
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
-from chat_models.groq_models import gpt_oss_120b
+from _chat_models.groq_models import gpt_oss_120b
 from dotenv import load_dotenv
 import json
 import os
