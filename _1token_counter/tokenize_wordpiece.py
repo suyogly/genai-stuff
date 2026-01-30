@@ -1,3 +1,7 @@
+import os
+os.environ['TRANSFORMERS_CACHE'] = '/tmp/transformers_cache'
+os.environ['HF_HOME'] = '/tmp/huggingface'
+
 from transformers import BertTokenizerFast
 
 def wordpiece(payload = "hello how are you? dimistification of the triskaidekaphobia"):
