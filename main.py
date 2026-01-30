@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Body
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -41,3 +42,8 @@ def chat_stream(payload: dict = Body(...)):
    user_msg = payload.get("query", "")
    res = Stream_chat(intent=user_msg)
    return StreamingResponse(res, media_type="text/event-stream")
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
