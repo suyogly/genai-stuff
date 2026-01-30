@@ -16,6 +16,15 @@ app = FastAPI()
 #     allow_headers=["*"],
 # )
 
+@app.get("/")
+def root():
+    return {"service": "up"}
+
+
+@app.get("/kaithheathcheck")
+def kaith_healthcheck():
+    return {"status": "ok"}
+
 @app.post("/tiktoken")
 def tiktoken_tokens(payload : dict = Body(...)):
    text = payload.get("input", "")
