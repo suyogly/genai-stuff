@@ -7,9 +7,12 @@ from typing import List
 from dotenv import load_dotenv # fuck it off in prod
 import numpy as np 
 
-load_dotenv() # fuck it off in prod
+if os.path.exists(".env"):
+    load_dotenv()
 
-if not os.getenv("GOOGLE_API_KEY"):
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
     raise RuntimeError("GOOGLE_API_KEY is not set")
 
 embedder = GoogleGenerativeAIEmbeddings(

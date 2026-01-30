@@ -5,9 +5,11 @@ from dotenv import load_dotenv
 import json
 import os
 
-load_dotenv()
-# if not os.getenv("GOOGLE_API_KEY"):
-#     raise RuntimeError("GOOGLE_API_KEY is not set")
+if os.path.exists(".env"):
+    load_dotenv()
+
+if not os.getenv("GROQ_API_KEY"):
+    raise RuntimeError("GROQ_API_KEY is not set")
 
 memory = InMemorySaver()
 
