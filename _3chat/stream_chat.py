@@ -1,6 +1,6 @@
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
-from _chat_models.groq_models import gpt_oss_120b
+from _chatmodels.groq_models import gpt_oss_120b
 from dotenv import load_dotenv
 import json
 import os
