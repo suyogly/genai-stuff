@@ -6,6 +6,8 @@ from _1token_counter.tokenize_tiktoken import get_tokens
 from _1token_counter.tokenize_wordpiece import wordpiece
 from _2embeddings._contextual_embeddings import cosine_similarity
 from _3chat.stream_chat import Stream_chat
+# from _4tools_and_functions.arxiv_paper_retriever import arxiv_retriever
+from _4tools_and_functions.agent_with_tools import tooling
 
 app = FastAPI()
 
@@ -41,6 +43,18 @@ def contextual_embeddings(payload: dict = Body(...)):
 def chat_stream(payload: dict = Body(...)):
    user_msg = payload.get("query", "")
    res = Stream_chat(intent=user_msg)
+   return StreamingResponse(res, media_type="text/event-stream")
+
+# @app.post("/arxiv")
+# async def arxiv_paper(payload: dict = Body(...)):
+#    user_query = payload.get("query", "")
+#    res = await arxiv_retriever(query=user_query)
+#    return res
+
+@app.post("/tooling")
+async def chat_with_tools(payload: dict = Body(...)):
+   user_query = payload.get("query", "")
+   res = tooling(query=user_query)
    return StreamingResponse(res, media_type="text/event-stream")
 
 if __name__ == "__main__":
